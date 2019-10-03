@@ -415,8 +415,11 @@ class User < ActiveRecord::Base
 				salary = tenant[1]
 				credit_score = tenant[2]
 				p_id = tenant[3]
+				available = tenant[4]
 
-				menu.choice "#{name}", -> {self.sign_contract(l_id, p_id)}
+				if available == true
+					menu.choice "#{name}", -> {self.sign_contract(l_id, p_id)}
+				end
 				}
 			menu.choice "Go Back", -> {self.view_listings_menu}
 
@@ -438,8 +441,11 @@ class User < ActiveRecord::Base
 				price = listing[1]
 				bedrooms = listing[2]
 				l_id = listing[3]
+				available = listing[4]
 
-				menu.choice "#{address}", -> {self.sign_contract(l_id, p_id)}
+				if available == true
+					menu.choice "#{address}", -> {self.sign_contract(l_id, p_id)}
+				end
 				}
 			menu.choice "Go Back", -> {self.view_tenants_menu}
 
@@ -485,7 +491,7 @@ class User < ActiveRecord::Base
 
 		banner_main_menu
 
-		process_log_out
+		logout
 
 		interface.welcome()
 

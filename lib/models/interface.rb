@@ -10,8 +10,6 @@ class Interface
 
   def welcome
 
-	loading_title_screen
-
 	system "clear"
 
 	banner_title_screen

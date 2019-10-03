@@ -1,5 +1,10 @@
 require_relative "sleep_timers"
 
+def initial_load
+
+	loading_title_screen
+end
+
 def loading_app_exit
 
 	banner_title_screen
@@ -8,14 +13,17 @@ def loading_app_exit
 	puts
 	system 'sleep 1'
 	puts
-	puts "              Closing down application...            "
+	puts "             Closing down application...             "
 	puts
 	system 'sleep 1.5'
 	puts
-	puts "                Thank you and Goodbye                "
+	puts "               Thank you and Goodbye                 "
 	puts
 	system 'sleep 2'
 	puts
+
+	system 'clear'
+
 end
 
 def process_log_out
@@ -310,8 +318,6 @@ def login_success
 	puts
 	system "sleep 3"
 
-	loading_x_short
-
 end
 
 def login_error
@@ -361,27 +367,15 @@ def logout
 	puts
 	system "sleep #{$short1}"
 	puts
-	puts "                Attempting Handshake...              "
+	puts "             Backing out of Handshake...             "
 	puts
 	system "sleep #{$short2}"
 	puts
-	puts "               Reattempting Handshake...             "
+	puts "                Revoking Validation...               "
 	puts
 	system "sleep #{$short3}"
 	puts
-	puts "                Handshake Established                "
-	puts
-	system "sleep #{$short4}"
-	puts
-	puts "               Validating Credentials...             "
-	puts
-	puts
-	puts "                  ***** ERROR *****                  "
-	puts
-	system "sleep #{$short5}"
-	puts
-	puts "  Incorrect Username or Password. Please Try Again.  "
-	puts
+	puts "                  Loading Main Menu                   "
 	puts
 	system "sleep 3"
 end

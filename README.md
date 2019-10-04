@@ -5,6 +5,6 @@ to browse available property listings as well as prospectice tenants.
 
 Contracts can be created, updated and deleted through CMD on windows or Terminal on OSX.
 
-Navigate to ../mod1_proj_5A and enter ruby ./bin/run.rb into CMD or Terminal
+Enter ruby ./bin/run.rb into CMD or Terminal.
 
-More information to be added.
+More information to be added soon.

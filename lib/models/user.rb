@@ -74,6 +74,7 @@ class User < ActiveRecord::Base
 			menu.choice "My Assets", -> {self.my_assets}
 			menu.choice "View Available Tenants", -> { self.view_tenants_menu }
 			menu.choice "View Available Listings", -> { self.view_listings_menu }
+			menu.choice "", -> {self.main_menu}
 			menu.choice "Log Out", -> { self.log_out }
 		end
 
@@ -93,7 +94,7 @@ class User < ActiveRecord::Base
 			menu.choice "My Contracts", -> {self.my_contracts}
 			menu.choice "My Tenants", -> { self.my_tenants }
 			menu.choice "My Listings", -> { self.my_listings }
-			menu.choice "", -> {self.my_contracts}
+			menu.choice "", -> {self.my_assets}
 			menu.choice "Go Back", -> { self.main_menu }
 		end
 
@@ -112,7 +113,7 @@ class User < ActiveRecord::Base
 			banner_my_contracts
 
 			puts
-			puts "YOU CURRENTLY HAVE #{contracts.length} CONTRACTS"
+			puts "You currently have #{contracts.length} contracts"
 			puts
 
 			contracts.each { |contract|
@@ -145,6 +146,7 @@ class User < ActiveRecord::Base
 		TTY::Prompt.new.select("") do |menu|
 			menu.choice "Update Contract", -> { self.setup_update(contract) }
 			menu.choice "Evict", -> { self.setup_evict(contract) }
+			menu.choice "", -> { self.contract_items(contract) }
 			menu.choice "Go Back", -> { self.my_contracts }
 		end
 
@@ -181,7 +183,7 @@ class User < ActiveRecord::Base
 
 		update_rent.update(rent: new_rent)
 
-		proccess_update_rent
+		process_update_rent
 
 		self.my_assets
 
@@ -212,9 +214,8 @@ class User < ActiveRecord::Base
 	def setup_evict(contract)
 
 		puts
-		puts "Are you want to end the contract with #{contract[0]}?"
+		puts "Are you sure you want to end the contract with #{contract[0]}?"
 		puts
-		puts "This will probably ruin #{contract[0]}'s life and make them homeless."
 
 		TTY::Prompt.new.select("") do |menu|
 			menu.choice "Do it.", -> { self.evict(contract) }
@@ -252,7 +253,7 @@ class User < ActiveRecord::Base
 		banner_my_tenants
 
 		puts
-		puts "YOU CURRENTLY HAVE #{tenants.length} TENANTS"
+		puts "You currently have #{tenants.length} tenants"
 		puts
 
 		tenants.each { |tenant|
@@ -281,7 +282,7 @@ class User < ActiveRecord::Base
 		banner_my_listings
 
 		puts
-		puts "YOU CURRENTLY HAVE #{listings.length} LISTINGS"
+		puts "You currently have #{listings.length} listings"
 		puts
 
 		listings.each { |listing|
@@ -503,7 +504,7 @@ class User < ActiveRecord::Base
 
 		system 'clear'
 
-		loading_app_exit
+		terminate_app
 
 		exit
 

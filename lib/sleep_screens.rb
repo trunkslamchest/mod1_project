@@ -1,56 +1,13 @@
 require_relative "sleep_timers"
 
-def initial_load
-
-	loading_title_screen
-end
-
-def loading_app_exit
-
-	banner_title_screen
-
-#   puts "|                         |                         |"
-	puts
-	system 'sleep 1'
-	puts
-	puts "             Closing down application...             "
-	puts
-	system 'sleep 1.5'
-	puts
-	puts "               Thank you and Goodbye                 "
-	puts
-	system 'sleep 2'
-	puts
-
-	system 'clear'
-
-end
-
-def process_log_out
-
-	puts
-	system 'sleep 1'
-	puts
-#   puts "|                         |                         |"
-	puts "                    Logging out...                   "
-	puts
-	system 'sleep 2'
-	puts
-	puts "                Returning to Main Menu               "
-	puts
-	system 'sleep 2'
-	puts
-
-end
-
 def process_update_rent
 
 	system 'sleep 0.5'
 	puts
-	puts "Updating Contract Rent..."
+	puts "Updating Contract Rent"
 	puts
 	system 'sleep 1'
-	puts "Contract has been updated."
+	puts "Contract has been updated"
 	puts
 	system 'sleep 2'
 	puts "Returning to Main Menu"
@@ -63,10 +20,10 @@ def process_update_duration
 
 	system 'sleep 0.5'
 	puts
-	puts "Updating Contract Length..."
+	puts "Updating Contract Length"
 	puts
 	system 'sleep 1'
-	puts "Contract has been updated."
+	puts "Contract has been updated"
 	puts
 	system 'sleep 2'
 	puts "Returning to Main Menu"
@@ -82,7 +39,7 @@ def process_evict
 	puts "Evicting..."
 	puts
 	system 'sleep 1'
-	puts "The Tenant has evicted lol get rekt"
+	puts "The Tenant has evicted"
 	puts
 	system 'sleep 2'
 	puts "Returning to Main Menu"
@@ -224,6 +181,7 @@ def banner_listing_information
 	puts "|                LISTING INFORMATION                |"
 	puts "|                                                   |"
 	puts "-----------------------------------------------------"
+	puts
 
 end
 
@@ -236,6 +194,7 @@ def banner_tenant_information
 	puts "|                 TENANT INFORMATION                |"
 	puts "|                                                   |"
 	puts "-----------------------------------------------------"
+	puts
 
 end
 
@@ -244,119 +203,173 @@ def login_banner
 	system 'clear'
 
 #   puts "|                         |                         |"
+	puts
 	puts "-----------------------------------------------------"
 	puts "|                                                   |"
 	puts "|          AuthLog v2.8888888888 RC-1.69420         |"
 	puts "|                                                   |"
-	puts "|                      2019 (c)                     |"
-	puts "|                                                   |"
 	puts "-----------------------------------------------------"
 	puts
 
 end
 
+def loading_title_screen
+
+	system 'clear'
+
+	system "sleep 0.5"
+
+	banner_title_screen
+
+	puts
+	puts "                    Now Loading                      "
+	puts
+	system "sleep #{$v_short2}"
+	puts "                       25%                           "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	puts "                       50%                           "
+	system "sleep #{$short2}"
+	print "\r" + ("\e[A\e[K"*1)
+	puts "                       75%                           "
+	system "sleep #{$v_short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	puts "                       98%                           "
+	system "sleep #{$long1}"
+	print "\r" + ("\e[A\e[K"*1)
+	puts "                       99%                           "
+	system "sleep #{$v_long1}"
+	print "\r" + ("\e[A\e[K"*1)
+	puts "                       100%                          "
+	system "sleep #{$v_long2}"
+	puts
+#   puts "|                         |                         |"
+	puts "                 Loading Complete                    "
+	puts
+	system "sleep 5"
+	puts
+end
+
+
 def login_create
+
+	system "sleep 0.5"
 
 	login_banner
 
 	system "sleep #{$v_short1}"
 
 #   puts "|                         |                         |"
-	puts "               Connecting to Auth Server             "
+	puts "              Connecting to Auth Server              "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$x_short4}"
+	puts "                 Attempting Handshake                "
 	puts
-	system "sleep #{$v_short2}"
-	puts
-	puts "                 Attempting Handshake...             "
-	puts
-	system "sleep #{$v_short3}"
+	system "sleep #{$short4}"
 	puts
 	puts "                 Handshake Established               "
-	puts
-	system "sleep #{$v_short4}"
-	puts
-	puts "                 Creating New Account...             "
-	puts
 	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$x_short3}"
+	puts "                 Creating New Account                "
+	puts
+	system "sleep #{$short4}"
 	puts
 	puts "                 ***** SUCCESS *****                 "
-	puts
-	system "sleep #{$short2}"
-	puts
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$v_short2}"
 	puts "                Returning to Main Menu               "
 	puts
 	system "sleep 3"
+	print "\r" + ("\e[A\e[K"*500)
+	system "sleep 0.5"
+
 end
 
 def login_success
 
+	system "sleep 0.5"
+
 	login_banner
 
 	system "sleep #{$v_short2}"
 
 #   puts "|                         |                         |"
-	puts "               Connecting to Auth Server             "
-	puts
-	system "sleep #{$v_short3}"
-	puts
-	puts "                 Attempting Handshake...             "
-	puts
-	system "sleep #{$v_short1}"
-	puts
-	puts "                 Handshake Established               "
-	puts
-	system "sleep #{$v_short3}"
-	puts
-	puts "                Validating Credentials...            "
-	puts
-	system "sleep #{$short2}"
-	puts
-	puts "                 ***** SUCCESS *****                 "
+	puts "              Connecting to Auth Server              "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$x_short2}"
+	puts "                 Attempting Handshake                "
 	puts
 	system "sleep #{$short4}"
 	puts
-	puts "                  Loading Main Menu                   "
+	puts "                 Handshake Established               "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$v_short3}"
+	puts "                Validating Credentials               "
+	puts
+	system "sleep #{$short4}"
+	puts
+	puts "                 ***** SUCCESS *****                 "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$v_short2}"
+	puts "                  Loading Main Menu                  "
 	puts
 	system "sleep 3"
+	print "\r" + ("\e[A\e[K"*500)
+	system "sleep 0.5"
 
 end
 
 def login_error
 
+	system "sleep 0.5"
+
 	login_banner
 
 	system "sleep #{$v_short2}"
 
 #   puts "|                         |                         |"
-	puts "               Connecting to Auth Server             "
-	puts
+	puts "              Connecting to Auth Server              "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
 	system "sleep #{$short5}"
-	puts
-	puts "                 Attempting Handshake...             "
-	puts
+	puts "                Attempting Handshake                 "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
 	system "sleep #{$med2}"
+	puts "               Reattempting Handshake                "
 	puts
-	puts "                Reattempting Handshake...            "
+	system "sleep #{$short4}"
 	puts
-	system "sleep #{$med2}"
-	puts
-	puts "                 Handshake Established               "
-	puts
+	puts "               Handshake Established                 "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$short2}"
+	puts "               Validating Credentials                "
 	puts
-	puts "                Validating Credentials...            "
+	system "sleep #{$short4}"
 	puts
-	puts
-	puts "                  ***** ERROR *****                  "
-	puts
+	puts "                 ***** ERROR *****                   "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
 	system "sleep #{$short5}"
-	puts
 	puts "  Incorrect Username or Password. Please Try Again.  "
 	puts
 	puts
 	system "sleep 3"
+	print "\r" + ("\e[A\e[K"*500)
+	system "sleep 0.5"
+
 end
 
 def logout
+
+	system "sleep 0.5"
 
 	login_banner
 
@@ -364,18 +377,66 @@ def logout
 
 #   puts "|                         |                         |"
 	puts "            Disonnecting from Auth Server            "
-	puts
 	system "sleep #{$short1}"
-	puts
-	puts "             Backing out of Handshake...             "
-	puts
-	system "sleep #{$short2}"
-	puts
-	puts "                Revoking Validation...               "
-	puts
-	system "sleep #{$short3}"
-	puts
-	puts "                  Loading Main Menu                   "
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$v_short3}"
+	puts "             Backing out of Handshake                "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$v_short5}"
+	puts "                Revoking Validation                  "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$x_short1}"
+	puts "                 Loading Main Menu                   "
 	puts
 	system "sleep 3"
+	print "\r" + ("\e[A\e[K"*500)
+	system "sleep 0.5"
+
+end
+
+def terminate_app
+
+	system "sleep 0.5"
+
+	banner_title_screen
+
+	system "sleep #{$v_short2}"
+
+#   puts "|                         |                         |"
+	puts "              Deleting Temporary Files               "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$short5}"
+	puts "               Clearing Database Cache               "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$med2}"
+	puts "              Terminating Sub Routines               "
+	puts
+	system "sleep #{$short4}"
+	puts
+	puts "                 **** SUCCESS ****                   "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$short2}"
+	puts "                 Reverting Changes                   "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$short2}"
+	puts "                Finalized Termination                "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$short5}"
+	puts "           Thank you for using Proman X9             "
+	puts
+	system "sleep 2"
+	puts
+	puts "      Created by Austin Smith & Oneil Williams       "
+	puts
+	system "sleep 3"
+	print "\r" + ("\e[A\e[K"*500)
+	system "sleep 0.5"
+
 end

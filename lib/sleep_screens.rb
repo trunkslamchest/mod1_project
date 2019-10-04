@@ -1,66 +1,12 @@
 require_relative "sleep_timers"
 
-def process_update_rent
+def load_main_menu
 
-	system 'sleep 0.5'
+	puts "                  Loading Main Menu                  "
 	puts
-	puts "Updating Contract Rent"
-	puts
-	system 'sleep 1'
-	puts "Contract has been updated"
-	puts
-	system 'sleep 2'
-	puts "Returning to Main Menu"
-	puts
-	system 'sleep 2'
-
-end
-
-def process_update_duration
-
-	system 'sleep 0.5'
-	puts
-	puts "Updating Contract Length"
-	puts
-	system 'sleep 1'
-	puts "Contract has been updated"
-	puts
-	system 'sleep 2'
-	puts "Returning to Main Menu"
-	puts
-	system 'sleep 2'
-
-end
-
-def process_evict
-
-	system 'sleep 0.5'
-	puts
-	puts "Evicting..."
-	puts
-	system 'sleep 1'
-	puts "The Tenant has evicted"
-	puts
-	system 'sleep 2'
-	puts "Returning to Main Menu"
-	puts
-	system 'sleep 2'
-
-end
-
-def process_sign_contract
-
-	system 'sleep 0.5'
-	puts
-	puts "Signing Contract..."
-	puts
-	system 'sleep 1'
-	puts "Contract has been signed. get money get paid gansta griz-ill"
-	puts
-	system 'sleep 2'
-	puts "Returning to Main Menu"
-	puts
-	system 'sleep 2'
+	system "sleep 3"
+	print "\r" + ("\e[A\e[K"*500)
+	system "sleep 0.5"
 
 end
 
@@ -138,7 +84,7 @@ def banner_my_listings
   	puts
 	puts "-----------------------------------------------------"
 	puts "|                                                   |"
-	puts "|                   MY LISTINGS                     |"
+	puts "|                    MY LISTINGS                    |"
 	puts "|                                                   |"
 	puts "-----------------------------------------------------"
 	puts
@@ -166,6 +112,19 @@ def banner_all_tenants
 	puts "-----------------------------------------------------"
 	puts "|                                                   |"
 	puts "|               ALL AVAILABLE TENANTS               |"
+	puts "|                                                   |"
+	puts "-----------------------------------------------------"
+	puts
+
+end
+
+def banner_contract_information
+
+#   puts "|                         |                         |"
+  	puts
+	puts "-----------------------------------------------------"
+	puts "|                                                   |"
+	puts "|                CONTRACT INFORMATION               |"
 	puts "|                                                   |"
 	puts "-----------------------------------------------------"
 	puts
@@ -206,7 +165,22 @@ def login_banner
 	puts
 	puts "-----------------------------------------------------"
 	puts "|                                                   |"
-	puts "|          AuthLog v2.8888888888 RC-1.69420         |"
+	puts "|                 AuthLog rc-1.69420                |"
+	puts "|                                                   |"
+	puts "-----------------------------------------------------"
+	puts
+
+end
+
+def contract_banner
+
+	system 'clear'
+
+#   puts "|                         |                         |"
+	puts
+	puts "-----------------------------------------------------"
+	puts "|                                                   |"
+	puts "|        Contractinator Premium v2.8888888888       |"
 	puts "|                                                   |"
 	puts "-----------------------------------------------------"
 	puts
@@ -222,32 +196,42 @@ def loading_title_screen
 	banner_title_screen
 
 	puts
+#   puts "|                       |                           |"
 	puts "                    Now Loading                      "
 	puts
+
 	system "sleep #{$v_short2}"
-	puts "                       25%                           "
+	puts
+	puts "                         0%                          "
+	system "sleep #{$v_short5}"
+	print "\r" + ("\e[A\e[K"*1)
+	puts "                        25%                          "
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*1)
-	puts "                       50%                           "
+	puts "                        50%                          "
 	system "sleep #{$short2}"
 	print "\r" + ("\e[A\e[K"*1)
-	puts "                       75%                           "
+	puts "                        75%                          "
 	system "sleep #{$v_short1}"
 	print "\r" + ("\e[A\e[K"*1)
-	puts "                       98%                           "
+	puts "                        98%                          "
 	system "sleep #{$long1}"
 	print "\r" + ("\e[A\e[K"*1)
-	puts "                       99%                           "
+	puts "                        99%                          "
 	system "sleep #{$v_long1}"
 	print "\r" + ("\e[A\e[K"*1)
 	puts "                       100%                          "
 	system "sleep #{$v_long2}"
 	puts
-#   puts "|                         |                         |"
-	puts "                 Loading Complete                    "
+	puts "                  Loading Complete                   "
 	puts
+
 	system "sleep 5"
-	puts
+
+	system 'clear'
+
+	system "sleep #{$v_short1}"
+
 end
 
 
@@ -262,7 +246,7 @@ def login_create
 #   puts "|                         |                         |"
 	puts "              Connecting to Auth Server              "
 	system "sleep #{$short1}"
-	print "\r" + ("\e[A\e[K"*4)
+	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$x_short4}"
 	puts "                 Attempting Handshake                "
 	puts
@@ -280,11 +264,8 @@ def login_create
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*4)
 	system "sleep #{$v_short2}"
-	puts "                Returning to Main Menu               "
-	puts
-	system "sleep 3"
-	print "\r" + ("\e[A\e[K"*500)
-	system "sleep 0.5"
+
+	load_main_menu
 
 end
 
@@ -301,11 +282,11 @@ def login_success
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$x_short2}"
-	puts "                 Attempting Handshake                "
+	puts "                 Attempting Handshake               "
 	puts
 	system "sleep #{$short4}"
 	puts
-	puts "                 Handshake Established               "
+	puts "                Handshake Established               "
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*4)
 	system "sleep #{$v_short3}"
@@ -317,11 +298,8 @@ def login_success
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*4)
 	system "sleep #{$v_short2}"
-	puts "                  Loading Main Menu                  "
-	puts
-	system "sleep 3"
-	print "\r" + ("\e[A\e[K"*500)
-	system "sleep 0.5"
+
+	load_main_menu
 
 end
 
@@ -336,11 +314,11 @@ def login_error
 #   puts "|                         |                         |"
 	puts "              Connecting to Auth Server              "
 	system "sleep #{$short1}"
-	print "\r" + ("\e[A\e[K"*4)
+	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$short5}"
 	puts "                Attempting Handshake                 "
 	system "sleep #{$short1}"
-	print "\r" + ("\e[A\e[K"*4)
+	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$med2}"
 	puts "               Reattempting Handshake                "
 	puts
@@ -348,7 +326,7 @@ def login_error
 	puts
 	puts "               Handshake Established                 "
 	system "sleep #{$short1}"
-	print "\r" + ("\e[A\e[K"*1)
+	print "\r" + ("\e[A\e[K"*4)
 	system "sleep #{$short2}"
 	puts "               Validating Credentials                "
 	puts
@@ -380,19 +358,24 @@ def logout
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$v_short3}"
-	puts "             Backing out of Handshake                "
+	puts "              Backing out of Handshake               "
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$v_short5}"
-	puts "                Revoking Validation                  "
+	puts "                 Revoking Validation                 "
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$x_short1}"
-	puts "                 Loading Main Menu                   "
-	puts
+
+	puts "You have been successfully logged out of you Account "
+
 	system "sleep 3"
-	print "\r" + ("\e[A\e[K"*500)
+
+	print "\r" + ("\e[A\e[K"*1)
+
 	system "sleep 0.5"
+
+	load_main_menu
 
 end
 
@@ -409,7 +392,7 @@ def terminate_app
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$short5}"
-	puts "               Clearing Database Cache               "
+	puts "              Clearing Database Cache                "
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$med2}"
@@ -419,15 +402,15 @@ def terminate_app
 	puts
 	puts "                 **** SUCCESS ****                   "
 	system "sleep #{$short1}"
-	print "\r" + ("\e[A\e[K"*1)
+	print "\r" + ("\e[A\e[K"*4)
 	system "sleep #{$short2}"
 	puts "                 Reverting Changes                   "
 	system "sleep #{$short1}"
 	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$short2}"
-	puts "                Finalized Termination                "
+	puts "               Finalized Termination                 "
 	system "sleep #{$short1}"
-	print "\r" + ("\e[A\e[K"*4)
+	print "\r" + ("\e[A\e[K"*1)
 	system "sleep #{$short5}"
 	puts "           Thank you for using Proman X9             "
 	puts
@@ -439,4 +422,167 @@ def terminate_app
 	print "\r" + ("\e[A\e[K"*500)
 	system "sleep 0.5"
 
+end
+
+def process_update_rent
+
+	system "sleep 0.5"
+
+	contract_banner
+
+	system "sleep #{$v_short2}"
+
+	puts "              Negotiating with Handler               "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$short5}"
+	puts "              Engaging Barter Protocols              "
+	puts
+	system "sleep #{$short4}"
+	puts
+	puts "                   Barter Engaged                    "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$med2}"
+	puts "            Sending Contractual Obligations          "
+	puts
+	system "sleep #{$short4}"
+	puts
+	puts "                 **** SUCCESS ****                   "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$short2}"
+#   puts "|                         |                         |"
+	puts "   Contract Rent Modification Yeeted and Completed    "
+
+	system "sleep 3"
+
+	print "\r" + ("\e[A\e[K"*1)
+
+	system "sleep 0.5"
+
+	load_main_menu
+
+end
+
+def process_update_duration
+
+	system "sleep 0.5"
+
+	contract_banner
+
+	system "sleep #{$v_short2}"
+
+	puts "              Negotiating with Handler               "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$short5}"
+	puts "              Engaging Barter Protocols              "
+	puts
+	system "sleep #{$short4}"
+	puts
+	puts "                   Barter Engaged                    "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$med2}"
+	puts "            Sending Contractual Obligations          "
+	puts
+	system "sleep #{$short4}"
+	puts
+	puts "                 **** SUCCESS ****                   "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$short2}"
+#   puts "|                         |                         |"
+	puts " Contract Duration Modification Yeeted and Completed  "
+
+	system "sleep 3"
+
+	print "\r" + ("\e[A\e[K"*1)
+
+	system "sleep 0.5"
+
+	load_main_menu
+
+end
+
+def process_evict
+
+	system "sleep 0.5"
+
+	contract_banner
+
+	system "sleep #{$v_short2}"
+
+	puts "              Negotiating with Handler               "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$short5}"
+	puts "              Engaging Burn Procedures               "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$med2}"
+	puts "              Contractual Fires Engaged              "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$med2}"
+	puts "       Sending Tenant to the Gates of Oblivion       "
+	puts
+	system "sleep #{$short4}"
+	puts
+	puts "                 **** SUCCESS ****                   "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$short2}"
+#   puts "|                         |                         |"
+	puts "        Contract has been Yeeted and Deleted         "
+
+	system "sleep 3"
+
+	print "\r" + ("\e[A\e[K"*1)
+
+	system "sleep 0.5"
+
+	load_main_menu
+
+end
+
+def process_sign_contract
+
+	system "sleep 0.5"
+
+	contract_banner
+
+	system "sleep #{$v_short2}"
+
+	puts "              Negotiating with Handler               "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$short5}"
+	puts "              Automating Task Scheduler              "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$med2}"
+	puts "         Writing Contract into Bi-lateral Law        "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*1)
+	system "sleep #{$short5}"
+	puts "           Allowing the All the Inks to Dry           "
+	puts
+	system "sleep #{$short4}"
+	puts
+	puts "                 **** SUCCESS ****                   "
+	system "sleep #{$short1}"
+	print "\r" + ("\e[A\e[K"*4)
+	system "sleep #{$short2}"
+#   puts "|                         |                         |"
+	puts "   Contract Creation has been Yeeted and Completed   "
+
+	system "sleep 3"
+
+	print "\r" + ("\e[A\e[K"*1)
+
+	system "sleep 0.5"
+
+	load_main_menu
 end

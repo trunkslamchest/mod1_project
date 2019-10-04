@@ -1,6 +1,3 @@
-	# print "\r" + ("\e[A\e[K"*3)
-	# print "\r" + "\e[J"
-
 $x_short1 = rand(0.1..0.5)
 $x_short2 = rand(0.1..0.5)
 $x_short3 = rand(0.1..0.5)
@@ -45,20 +42,20 @@ $x_long5 = rand(5..10)
 
 # def spinner
 
-# 200.times do
-# 	print "|"
-# 	system "sleep 0.25"
-# 	print "\r" + ("\e[A\e[K"*1)
-# 	print "/"
-# 	system "sleep 0.25"
-# 	print "\r" + ("\e[A\e[K"*1)
-# 	print "-"
-# 	system "sleep 0.25"
-# 	print "\r" + ("\e[A\e[K"*1)
-# 	print "\\"
-# 	system "sleep 0.25"
-# 	print "\r" + ("\e[A\e[K"*1)
-# end
+# 	200.times do
+# 		print "|"
+# 		system "sleep 0.1"
+# 		print "\r" + ("\e[A\e[K"*1)
+# 		print "/"
+# 		system "sleep 0.1"
+# 		print "\r" + ("\e[A\e[K"*1)
+# 		print "-"
+# 		system "sleep 0.1"
+# 		print "\r" + ("\e[A\e[K"*1)
+# 		print "\\"
+# 		system "sleep 0.1"
+# 		print "\r" + ("\e[A\e[K"*1)
+# 	end
 
 # end
 

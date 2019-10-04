@@ -1,9 +1,12 @@
 require_relative "../sleep_screens"
 
 class User < ActiveRecord::Base
+
 	has_many :contracts
 	has_many :tenants, through: :contracts
 	has_many :listings, through: :contracts
+
+	include ActiveSupport::NumberHelper
 
 	def self.login
 
@@ -21,6 +24,8 @@ class User < ActiveRecord::Base
 		if user_search == nil
 
 			login_error
+
+			banner_title_screen
 
 			self.login
 
@@ -133,14 +138,18 @@ class User < ActiveRecord::Base
 
 		system 'clear'
 
+		banner_contract_information
+
 		puts
 		puts "Your contract with: #{contract[0]}"
 		puts
 
 		puts "Name: " + "#{contract[0]}"
 		puts "Address: " + "#{contract[1]}"
-		puts "Rent: " + "$#{contract[2]}"
-		puts "Duration: " + "#{contract[3]} months"
+		puts "Rent: " + "#{number_to_currency(contract[2])}"
+		# p contract[3]
+		puts contract[3] == 1 ? "Duration: " + "#{contract[3]} month" : "Duration: " + "#{contract[3]} months"
+		# puts "Duration: " + "#{contract[3]} months"
 		puts
 
 		TTY::Prompt.new.select("") do |menu|
@@ -163,7 +172,7 @@ class User < ActiveRecord::Base
 		TTY::Prompt.new.select("") do |menu|
 			menu.choice "Rent", -> { self.update_rent(contract) }
 			menu.choice "Duration", -> { self.update_duration(contract) }
-			menu.choice "Terminate Contract", -> { self.setup_evict }
+			menu.choice "Terminate Contract", -> { self.setup_evict(contract) }
 			menu.choice "Go Back", -> { self.my_contracts }
 		end
 
@@ -177,7 +186,7 @@ class User < ActiveRecord::Base
 
 		update_rent = Contract.find(contract[4])
 
-		puts "What do you want to change the rent to?"
+		puts "What do you want to update the rent to?"
 
 		new_rent = gets.chomp
 
@@ -260,7 +269,7 @@ class User < ActiveRecord::Base
 
 			puts
 			puts "Name: " + "#{tenant[0]}"
-			puts "Yearly Salary: " + "#{tenant[1]}"
+			puts "Yearly Salary: " + "#{number_to_currency(tenant[1])}"
 			puts "Credit Score: " + "#{tenant[2]}"
 			puts
 
@@ -289,7 +298,6 @@ class User < ActiveRecord::Base
 
 			puts
 			puts "Address: " + "#{listing[0]}"
-			puts "Price: " + "#{listing[1]}"
 			puts "Bedrooms: " + "#{listing[2]}"
 			puts
 
@@ -367,7 +375,7 @@ class User < ActiveRecord::Base
 
 		puts
 		puts "Address: " +  address
-		puts "Price: " + price
+		puts "Estimated Price: " + number_to_currency(price) + "/month"
 		puts "Bedrooms: " + bedrooms
 
 		TTY::Prompt.new.select("") do |menu|
@@ -388,7 +396,7 @@ class User < ActiveRecord::Base
 		puts
 
 		puts "Name: " + name
-		puts "Salary: " + salary
+		puts "Salary: " + number_to_currency(salary)
 		puts "Credit Score: " + credit_score
 
 		puts
